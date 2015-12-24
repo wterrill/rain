@@ -103,6 +103,7 @@ public class Game extends Canvas implements Runnable {
 				frame.setTitle(title + "  |  " + (updates + "ups, " + frames + "fps"));
 				updates = 0;
 				frames = 0;
+				System.out.println("Leif is from Ohio");
 			}
 
 		}
