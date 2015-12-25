@@ -1,5 +1,7 @@
 package com.thecherno.rain.graphics;
 
+import java.util.Random;
+
 public class Sprite {
 	
 	public final int SIZE;
@@ -7,9 +9,24 @@ public class Sprite {
 	public int [] pixels;
 	private SpriteSheet sheet;
 	
-	public static Sprite grass = new Sprite (16, 0, 0, SpriteSheet.tiles);
-	// creates a new, static Sprite.  Sprite.grass is not accessible from all other classes.  Sprite grass = a new Sprite.  Below we defined a Sprite to need (size, x, y, Spritesheet.sheet), where size is the size of the sprite in pixels, x is the beginning x coordinate on the sprite sheet, y the beginning y coordinate of the sprite on the sprite sheet, and Spritesheet sheet the actualy spritesheet that we have stored the sprite into in the Spritesheet class
+	
+	public static Sprite flowers = new Sprite (16, 0, 0, SpriteSheet.tiles);
+	public static Sprite grass1 = new Sprite (16, 5, 0, SpriteSheet.tiles);
+	public static Sprite grass2 = new Sprite (16, 8, 0, SpriteSheet.tiles);
+	public static Sprite grass3 = new Sprite (16, 9, 0, SpriteSheet.tiles);
+	
+		// creates a new, static Sprite.  Sprite.grass is 
+		// not accessible from all other classes. 
+		// Sprite grass = a new Sprite.  Below we defined a 
+		// Sprite to need (size, x, y, Spritesheet.sheet), where size 
+		// is the size of the sprite in pixels, x is the beginning 
+		// x coordinate on the sprite sheet, y the beginning 
+		// y coordinate of the sprite on the sprite sheet, and 
+		// Spritesheet sheet the actualy spritesheet that we have 
+		// stored the sprite into in the Spritesheet class
+	
 	public static Sprite voidSprite = new Sprite (16,0x1B87E0);
+	
 	
 	public static Sprite player0 = new Sprite (16, 1, 0, SpriteSheet.tiles);
 	public static Sprite player1 = new Sprite (16, 2, 0, SpriteSheet.tiles);
@@ -17,7 +34,8 @@ public class Sprite {
 	public static Sprite player3 = new Sprite (16, 4, 0, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
-		//this defines what a new Sprite needs in order to be created, and what those objects correlate too.
+			//this defines what a new Sprite needs in order 
+			// to be created, and what those objects correlate too.
 		SIZE = size;
 		pixels = new int [SIZE*SIZE];
 		this.x = x * size;

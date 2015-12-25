@@ -42,27 +42,18 @@ public class Screen {
 		}
 	}
 
-	//public void render(int xOffset, int yOffset) {
-		//for (int y = 0; y < height; y++) {
-			//int yp = y + yOffset;
-			//if (yp < 0 || yp >= height) continue;
-			//for (int x = 0; x < width; x++) {
-				//int xp = x + xOffset;
-				//if (xp < 0 || xp >= width) continue;
-				//int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK)* MAP_SIZE;
-				// this tileIndex creates how many pixels reside in a tile (which is 32 x 32) (>> is shift right operation; it is divide by 2 to the power of X, where x is 4 in this equation). the & function is a bitwise function, when you get to tile 63, return to tile 0.  This will create a repeating pattern; or a map loop
-				//pixels[xp + yp * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
-				// Sprite.grass.pixels we're looking at sprites pixels [(x (from full loop above) & 15.  The bitwise & is like a move with mask.  0 & 0 = 0, 0 & 1 = 0, 1 & 0 = 0, 1 & 1 = 1.  It compares every bit at the bit level.
-			//}
-		//}
-	//}
 
 	// things that go into rendering: Where? -- we're using offset, based off player position.
 	public void renderTile(int xp, int yp, Tile tile) {
-		xp -= xOffset;
+		xp -= xOffset; //adjusting the x location of the tile by the offset.
 		yp -= yOffset;
 		for (int y = 0; y < tile.sprite.SIZE; y++) {
-			int ya = y + yp;
+			int ya = y + yp; 
+				// absolute y = the pixel within the sprite that is up to be rendered.
+				// y (zero to 15) tile position
+				// y = yp = tile position of the tile on the map.
+				// ya= absolute position on 
+				// the map of the tile that we're rendering
 			for (int x = 0; x < tile.sprite.SIZE; x++) {
 				int xa = x + xp;
 				if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
