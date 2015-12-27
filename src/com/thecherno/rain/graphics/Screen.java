@@ -77,7 +77,7 @@ public class Screen {
 			if (xa <0) xa = 0;
 			int col = sprite.pixels[x + y*sprite_size];
 			// the next line handles the transparency of the sprite if the color is pink.
-			// *note* the initial ff handles the alpha channel.
+			// *note* the initial ff handles the alpha channel, and 0xff00ff is the color pink.
 			if (col != 0xffff00ff) pixels[xa + ya * width] = col;
 		}
 	}

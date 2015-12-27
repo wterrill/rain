@@ -28,7 +28,10 @@ public class Sprite {
 	public static Sprite voidSprite = new Sprite (16,0x1B87E0);
 	
 	//the player sprite is 32x32, so the numbering on the sprite sheet is different.
-	public static Sprite player = new Sprite(32, 0, 2, SpriteSheet.tiles);
+	public static Sprite player_up = 	new Sprite(32, 0, 2, SpriteSheet.tiles);
+	public static Sprite player_right = new Sprite(32, 1, 2, SpriteSheet.tiles);
+	public static Sprite player_down = 	new Sprite(32, 2, 2, SpriteSheet.tiles);
+	public static Sprite player_left = 	new Sprite(32, 3, 2, SpriteSheet.tiles);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 			//this defines what a new Sprite needs in order 
