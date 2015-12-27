@@ -65,15 +65,17 @@ public class Screen {
 	}
 	
 	public void renderPlayer (int xp, int yp, Sprite sprite) {
+		//
+		int sprite_size = 32; // this is the size of the sprite that we use for the player
 		xp -= xOffset;
 		yp -= yOffset;
-		for (int y = 0; y < 16; y++) {
+		for (int y = 0; y < sprite_size; y++) {
 		int ya = y + yp;
-		for (int x = 0; x < 16; x++) {
+		for (int x = 0; x < sprite_size; x++) {
 			int xa = x + xp;
-			if (xa < -16 || xa >= width || ya < 0 || ya >= height) break;
+			if (xa < -sprite_size || xa >= width || ya < 0 || ya >= height) break;
 			if (xa <0) xa = 0;
-			int col = sprite.pixels[x + y*16];
+			int col = sprite.pixels[x + y*sprite_size];
 			// the next line handles the transparency of the sprite if the color is pink.
 			// *note* the initial ff handles the alpha channel.
 			if (col != 0xffff00ff) pixels[xa + ya * width] = col;
