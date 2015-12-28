@@ -24,7 +24,7 @@ public class RandomLevel extends Level {
 					}else{
 						rand = random.nextInt(4);
 						}
-				tiles [x+y*width] = rand;
+				tileInt [x+y*width] = rand;
 				}
 			}
 		}

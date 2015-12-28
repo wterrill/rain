@@ -7,15 +7,17 @@ import com.thecherno.rain.level.tile.Tile;
 public class Level {
 
 	protected int width, height;
-	protected int[] tiles;
+	protected int[] tileInt;
+	protected Tile[] tiles;
 	private static int SPRITE_SIZE = 16;
+	
 
 	
 	//this is a constructor.  If defines what is in a level, how those items are defined.
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
-		tiles = new int[width * height];
+		tileInt = new int[width * height];
 		generateLevel();
 	}
 
@@ -31,6 +33,7 @@ public class Level {
 	protected void loadLevel(String path) {
 
 	}
+	
 
 	public void update() {
 
@@ -55,7 +58,10 @@ public class Level {
 			for (int x = x0; x < x1; x++) {
 				//x0, x1 = x min and x max on the screen
 				//y0k y1 = y min and y max on the screen
-				getTile(x, y).render(x,y,screen);
+				//getTile(x, y).render(x,y,screen);
+				if (x < 0 || y < 0 || x >= width || y >= height) Tile.voidTile.render(x, y, screen);
+				else tiles[x+y*16].render(x, y, screen);
+				
 				// getTile examines the map array and gets the value of the specific tile there.
 				// grass, stone, flowers, etc.
 				// then we call the render method from Tile to put the tile on the screen
@@ -69,11 +75,11 @@ public class Level {
 		// This allows us to take the finite map and make it look infinite by
 		// providing values that are outside of the boundary of level.
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
-		if (tiles[x + y * width] == 0) return Tile.flowers;
-		if (tiles[x + y * width] == 1) return Tile.grass1;
-		if (tiles[x + y * width] == 2) return Tile.grass2;
-		if (tiles[x + y * width] == 3) return Tile.grass3;
-		if (tiles[x + y * width] == 4) return Tile.rock;
+		if (tileInt[x + y * width] == 0) return Tile.flowers;
+		if (tileInt[x + y * width] == 1) return Tile.grass1;
+		if (tileInt[x + y * width] == 2) return Tile.grass2;
+		if (tileInt[x + y * width] == 3) return Tile.grass3;
+		if (tileInt[x + y * width] == 4) return Tile.rock;
 		return Tile.voidTile;
 	}
 	
