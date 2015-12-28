@@ -1,5 +1,7 @@
 package com.thecherno.rain.level;
 
+import java.util.Random;
+
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
@@ -8,10 +10,9 @@ public class Level {
 
 	protected int width, height;
 	protected int[] tileInt;
-	protected Tile[] tiles;
+	protected int[] tiles;
 	private static int SPRITE_SIZE = 16;
-	private static int MAP_SIZE_W = 16;
-	private static int MAP_SIZE_H = 16;
+
 	
 
 	
@@ -61,13 +62,8 @@ public class Level {
 			for (int x = x0; x < x1; x++) {
 				//x0, x1 = x min and x max on the screen
 				//y0k y1 = y min and y max on the screen
-				//getTile(x, y).render(x,y,screen);
-				if (x + y * 16 < 0 || x + y * 16 >= MAP_SIZE_W * MAP_SIZE_H) {
-					Tile.voidTile.render(x, y, screen);
-					continue;
-					}
-				int i = x+y*16;
-				tiles[x+y*16].render(x, y, screen);
+				getTile(x, y).render(x,y,screen);
+
 				
 				// getTile examines the map array and gets the value of the specific tile there.
 				// grass, stone, flowers, etc.
@@ -77,16 +73,24 @@ public class Level {
 			}
 		}
 
-
+	// Grass = 	 0xFF00FF00 = Green
+	// Wall =  	 0xFF000000 = Black
+	// Flowers = 0xFFFFFF00 = Yellow
+	// Rock = 	 0xFF808080 = Grey
 	public Tile getTile(int x, int y) {
+		Random random = new Random();
 		// This allows us to take the finite map and make it look infinite by
 		// providing values that are outside of the boundary of level.
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
-		if (tileInt[x + y * width] == 0) return Tile.flowers;
-		if (tileInt[x + y * width] == 1) return Tile.grass1;
-		if (tileInt[x + y * width] == 2) return Tile.grass2;
-		if (tileInt[x + y * width] == 3) return Tile.grass3;
-		if (tileInt[x + y * width] == 4) return Tile.rock;
+		if (tiles[x + y * width] == 0xFFFFFF00 ) return Tile.flowers;
+		if (tiles[x + y * width] == 0xFF00FF00){
+			if (random.nextInt(3) == 0) return Tile.grass1;
+			if (random.nextInt(3) == 1) return Tile.grass2;
+			if (random.nextInt(3) == 2) return Tile.grass3;
+		}
+		if (tiles[x + y * width] == 0xFF808080) return Tile.rock;
+		if (tiles[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
+		
 		return Tile.voidTile;
 	}
 	
