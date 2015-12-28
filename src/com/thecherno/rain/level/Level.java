@@ -84,9 +84,10 @@ public class Level {
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
 		if (tiles[x + y * width] == 0xFFFFFF00 ) return Tile.flowers;
 		if (tiles[x + y * width] == 0xFF00FF00){
-			if (random.nextInt(3) == 0) return Tile.grass1;
-			if (random.nextInt(3) == 1) return Tile.grass2;
-			if (random.nextInt(3) == 2) return Tile.grass3;
+			int rand = random.nextInt(3);
+			if (rand == 0) return Tile.grass1;
+			if (rand == 1) return Tile.grass2;
+			if (rand == 2) return Tile.grass3;
 		}
 		if (tiles[x + y * width] == 0xFF808080) return Tile.rock;
 		if (tiles[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
