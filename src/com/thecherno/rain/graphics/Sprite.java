@@ -14,6 +14,7 @@ public class Sprite {
 	public static Sprite grass1 = new Sprite (16, 5, 0, SpriteSheet.tiles);
 	public static Sprite grass2 = new Sprite (16, 8, 0, SpriteSheet.tiles);
 	public static Sprite grass3 = new Sprite (16, 9, 0, SpriteSheet.tiles);
+	public static Sprite rock = new Sprite (16, 10, 0, SpriteSheet.tiles);
 	
 		// creates a new, static Sprite.  Sprite.grass is 
 		// not accessible from all other classes. 
@@ -73,7 +74,7 @@ public class Sprite {
 		for (int y = 0; y < SIZE; y++) {
 			for (int x=0; x<SIZE; x++) {
 				pixels [x+y*SIZE] = sheet.pixels[(x + this.x) + (y + this.y) * sheet.SIZE];
-				//sets / extracts a single spirte from the sprite sheet.  It sets the sprite pixels (pixels [x+y * size] to a specific pixel in the sprite sheet.
+				//sets / extracts a single sprite from the sprite sheet.  It sets the sprite pixels (pixels [x+y * size] to a specific pixel in the sprite sheet.
 			}
 		}
 	}
