@@ -55,7 +55,7 @@ public class Game extends Canvas implements Runnable {
 		//level = new RandomLevel(64, 64); //This was for the earlier randomized level. In the future it  
 											// might be a combination of the two methods.
 		level = new SpawnLevel ("/textures/level.png");
-		player = new Player (key);
+		player = new Player (128, 128, key); //128 is the x and y axis of the spawning points of the player
 		
 		addKeyListener(key);
 	}
