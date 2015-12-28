@@ -35,6 +35,7 @@ public class Game extends Canvas implements Runnable {
 	private Level level;
 	private Player player;
 	private boolean running = false;
+	private boolean randomized = true; // This boolean sets whether or not the level is from a pre-created map, or is generated randomly.
 	// NEED TO CHECK THESE LINES AND UPDATE ACCORDINGLY
 		
 	
@@ -52,9 +53,11 @@ public class Game extends Canvas implements Runnable {
 		frame = new JFrame();
 		
 		key = new Keyboard();
-		//level = new RandomLevel(64, 64); //This was for the earlier randomized level. In the future it  
-											// might be a combination of the two methods.
+		if(randomized == true) {
+			level = new RandomLevel(64, 64);  //I kind of like the randomized level, so I kept it :) 
+		}else{					
 		level = new SpawnLevel ("/textures/level.png");
+		}
 		player = new Player (128, 128, key); //128 is the x and y axis of the spawning points of the player
 		
 		addKeyListener(key);

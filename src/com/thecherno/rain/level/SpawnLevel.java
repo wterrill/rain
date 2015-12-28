@@ -13,6 +13,7 @@ public class SpawnLevel extends Level {
 	public SpawnLevel(String path) {
 		super(path);
 	}
+	
 	protected void loadLevel(String path) {
 		try {
 			BufferedImage image = ImageIO.read(SpawnLevel.class.getResource(path));
@@ -26,6 +27,7 @@ public class SpawnLevel extends Level {
 			
 		}
 	}
+	
 
 	protected void generateLevel(){
 

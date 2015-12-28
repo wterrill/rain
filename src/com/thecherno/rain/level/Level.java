@@ -1,5 +1,6 @@
 package com.thecherno.rain.level;
 
+import java.io.IOException;
 import java.util.Random;
 
 import com.thecherno.rain.graphics.Screen;
@@ -81,6 +82,7 @@ public class Level {
 		Random random = new Random();
 		// This allows us to take the finite map and make it look infinite by
 		// providing values that are outside of the boundary of level.
+		try{
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
 		if (tiles[x + y * width] == 0xFFFFFF00 ) return Tile.flowers;
 		if (tiles[x + y * width] == 0xFF00FF00){
@@ -88,9 +90,19 @@ public class Level {
 			if (rand == 0) return Tile.grass1;
 			if (rand == 1) return Tile.grass2;
 			if (rand == 2) return Tile.grass3;
-		}
+			}
 		if (tiles[x + y * width] == 0xFF808080) return Tile.rock;
 		if (tiles[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
+		} catch(NullPointerException e) {
+			if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
+			if (tileInt[x + y * width] == 0 ) return Tile.flowers;
+			if (tileInt[x + y * width] == 1) return Tile.grass1;
+			if (tileInt[x + y * width] == 2) return Tile.grass2;
+			if (tileInt[x + y * width] == 3) return Tile.grass3;
+			if (tileInt[x + y * width] == 4) return Tile.rock;
+			//if (tileInt[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
+		}
+		
 		
 		return Tile.voidTile;
 	}
