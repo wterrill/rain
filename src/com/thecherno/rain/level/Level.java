@@ -10,6 +10,8 @@ public class Level {
 	protected int[] tileInt;
 	protected Tile[] tiles;
 	private static int SPRITE_SIZE = 16;
+	private static int MAP_SIZE_W = 16;
+	private static int MAP_SIZE_H = 16;
 	
 
 	
@@ -23,6 +25,7 @@ public class Level {
 
 	public Level(String path) {
 		loadLevel(path);
+		generateLevel();
 	}
 
 	//This is a method.  It is called by a constructor, which sets the parameters to run once the method is called.
@@ -59,8 +62,12 @@ public class Level {
 				//x0, x1 = x min and x max on the screen
 				//y0k y1 = y min and y max on the screen
 				//getTile(x, y).render(x,y,screen);
-				if (x < 0 || y < 0 || x >= width || y >= height) Tile.voidTile.render(x, y, screen);
-				else tiles[x+y*16].render(x, y, screen);
+				if (x + y * 16 < 0 || x + y * 16 >= MAP_SIZE_W * MAP_SIZE_H) {
+					Tile.voidTile.render(x, y, screen);
+					continue;
+					}
+				int i = x+y*16;
+				tiles[x+y*16].render(x, y, screen);
 				
 				// getTile examines the map array and gets the value of the specific tile there.
 				// grass, stone, flowers, etc.

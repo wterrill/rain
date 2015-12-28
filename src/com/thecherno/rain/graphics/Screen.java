@@ -10,7 +10,7 @@ public class Screen {
 	public int width;
 	public int height;
 	public int[] pixels;
-	public final int MAP_SIZE = 8;
+	public final int MAP_SIZE = 16;
 	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
 	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 	// tiles that we use to create a display map
@@ -31,7 +31,7 @@ public class Screen {
 
 		for (int i = 0; i < MAP_SIZE * MAP_SIZE; i++) {
 			tiles[i] = random.nextInt(0xFFFFFF);
-			// every time that a number (i) is less than are tile size (64*64), add one to a number (i).  Then, asses that integer (i) in the tiles array, and apply a random color from 0-255 (or 0x000000 to 0xFFFFFF where 0x denotes hexidecimal format).
+			// every time that a number (i) is less than are tile size (64*64), add one to a number (i).  Then, assess that integer (i) in the tiles array, and apply a random color from 0-255 (or 0x000000 to 0xFFFFFF where 0x denotes hexidecimal format).
 		}
 	}
 
