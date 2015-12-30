@@ -42,8 +42,17 @@ public class Game extends Canvas implements Runnable {
 	public Screen screen;
 	
 
-	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-	private int [] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); //this creates an image
+	private int [] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData(); //and this allows us to write to it.
+	
+	
+	// Here's a fuller explanation from: http://stackoverflow.com/questions/20852641/bufferedimage-int-pixels-and-rendering-how-do-they-work-they-work-together
+	// Basic types like short, int, long etc are not Objects.
+	// However, int[] is an array. Arrays are objects in java. Java manipulates objects by reference, not value.
+	// In this line you are not creating a new object. You are storing a reference to the object int[] in your 
+	// variable pixels. Anything you change in pixels, gets changed inside of the int[] object in image
+	
+	
 	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
@@ -80,7 +89,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void run() {
-		// anything put between here and the while (running == true) loop is only excuted once when we start the game
+		// anything put between here and the while (running == true) loop is only executed once when we start the game
 		long lastTime = System.nanoTime();
 		// moves the system time into a last time variable.  long is a very long variable, like a DINT
 		long timer = System.currentTimeMillis();
@@ -91,13 +100,11 @@ public class Game extends Canvas implements Runnable {
 		requestFocus();
 		while (running == true) {
 			long now = System.nanoTime();
-			delta += (now - lastTime) / ns;
+			delta += (now - lastTime) / ns; // -> creates delta in ms
 			lastTime = now;
-			// delta += (delta + (now-lastTime)/ (100000000.0 / 60) -- kind of like Free Running clock S4
 			while (delta >= 1) {
 				update();
-				updates++;
-				// this is updates = updates +1 (we're counting up).
+					updates++;	// this is updates = updates +1 (we're counting up).
 				delta--;
 			}
 			render();
@@ -133,14 +140,11 @@ public class Game extends Canvas implements Runnable {
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 		
-			for (int i=0; i<pixels.length; i++) {
+		for (int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
 
 		Graphics g = bs.getDrawGraphics();
-		{
-
-		}
 		g.setColor(new Color(0, 0, 0));
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);

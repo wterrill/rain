@@ -9,12 +9,42 @@ public class Sprite {
 	public int [] pixels;
 	private SpriteSheet sheet;
 	
+	//row1
+	public static Sprite flowers = 			new Sprite (16, 0, 0, SpriteSheet.tiles);
+	public static Sprite grass1 = 			new Sprite (16, 5, 0, SpriteSheet.tiles);
+	public static Sprite grass2 = 			new Sprite (16, 8, 0, SpriteSheet.tiles);
+	public static Sprite grass3 = 			new Sprite (16, 9, 0, SpriteSheet.tiles);
+	public static Sprite rock = 			new Sprite (16, 10, 0, SpriteSheet.tiles);
+	public static Sprite brick_red1 = 		new Sprite (16, 11, 0, SpriteSheet.tiles);
+	public static Sprite stonewall_mixed = 	new Sprite (16, 12, 0, SpriteSheet.tiles);
+	public static Sprite stone_wall1 = 		new Sprite (16, 13, 0, SpriteSheet.tiles);
+	public static Sprite stone_wall_vine = 	new Sprite (16, 14, 0, SpriteSheet.tiles);
+	public static Sprite stone_wall_crack = new Sprite (16, 15, 0, SpriteSheet.tiles);
 	
-	public static Sprite flowers = new Sprite (16, 0, 0, SpriteSheet.tiles);
-	public static Sprite grass1 = new Sprite (16, 5, 0, SpriteSheet.tiles);
-	public static Sprite grass2 = new Sprite (16, 8, 0, SpriteSheet.tiles);
-	public static Sprite grass3 = new Sprite (16, 9, 0, SpriteSheet.tiles);
-	public static Sprite rock = new Sprite (16, 10, 0, SpriteSheet.tiles);
+	//row2
+	public static Sprite brick_red2 = 		new Sprite (16, 0, 1, SpriteSheet.tiles);
+	public static Sprite brick_colored =	new Sprite (16, 1, 1, SpriteSheet.tiles);
+	public static Sprite brick_darkRed =	new Sprite (16, 2, 1, SpriteSheet.tiles);
+	public static Sprite brick_white = 		new Sprite (16, 3, 1, SpriteSheet.tiles);
+	public static Sprite brick_house = 		new Sprite (16, 4, 1, SpriteSheet.tiles);
+	public static Sprite stone_wall2 = 		new Sprite (16, 5, 1, SpriteSheet.tiles);
+	public static Sprite grass_fall = 		new Sprite (16, 6, 1, SpriteSheet.tiles);
+	public static Sprite grass_summer = 	new Sprite (16, 7, 1, SpriteSheet.tiles);
+	public static Sprite grass_winter = 	new Sprite (16, 8, 1, SpriteSheet.tiles);
+	public static Sprite grass4 = 			new Sprite (16, 9, 1, SpriteSheet.tiles);
+	public static Sprite grass5 = 			new Sprite (16, 10, 1, SpriteSheet.tiles);
+	public static Sprite grass6 = 			new Sprite (16, 11, 1, SpriteSheet.tiles);
+	public static Sprite water1 = 			new Sprite (16, 12, 1, SpriteSheet.tiles);
+	public static Sprite water2 = 			new Sprite (16, 13, 1, SpriteSheet.tiles);
+	public static Sprite water3 = 			new Sprite (16, 14, 1, SpriteSheet.tiles);
+	
+	//row3
+	public static Sprite hedge = 			new Sprite (16, 8, 2, SpriteSheet.tiles);
+	public static Sprite hedge_fall = 		new Sprite (16, 8, 2, SpriteSheet.tiles);
+	public static Sprite birch = 			new Sprite (16, 10, 2, SpriteSheet.tiles);
+	public static Sprite birch_red = 		new Sprite (16, 11, 2, SpriteSheet.tiles);
+	public static Sprite birch_brown = 		new Sprite (16, 12, 2, SpriteSheet.tiles);
+	
 	
 		// creates a new, static Sprite.  Sprite.grass is 
 		// not accessible from all other classes. 
