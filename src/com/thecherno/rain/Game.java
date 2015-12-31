@@ -3,6 +3,7 @@ package com.thecherno.rain;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.input.Keyboard;
+import com.thecherno.rain.input.Mouse;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
 import com.thecherno.rain.level.SpawnLevel;
@@ -69,7 +71,12 @@ public class Game extends Canvas implements Runnable {
 		TileCoordinate playerSpawn = new TileCoordinate(20,62);
 		player = new Player (playerSpawn.x(),playerSpawn.y(), key); //128 is the x and y axis of the spawning points of the player
 		player.init(level);
+		
 		addKeyListener(key);
+		
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 	}
 
 	public synchronized void start() {
@@ -145,9 +152,12 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(new Color(0, 0, 0));
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Verdana", 0,50));
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32,  64, 64);
+		g.drawString("Button: "+ Mouse.getButton(), 80, 80);
 		g.dispose();
 		bs.show();
 	}
