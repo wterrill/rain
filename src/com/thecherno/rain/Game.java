@@ -16,6 +16,7 @@ import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
 import com.thecherno.rain.level.SpawnLevel;
+import com.thecherno.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +36,7 @@ public class Game extends Canvas implements Runnable {
 	private Level level;
 	private Player player;
 	private boolean running = false;
-	private boolean randomized = true; // This boolean sets whether or not the level is from a pre-created map, or is generated randomly.
+	private boolean randomized = false; // This boolean sets whether or not the level is from a pre-created map, or is generated randomly.
 	// NEED TO CHECK THESE LINES AND UPDATE ACCORDINGLY
 		
 	
@@ -44,7 +45,6 @@ public class Game extends Canvas implements Runnable {
 
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); //this creates an image
 	private int [] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData(); //and this allows us to write to it.
-	
 	
 	// Here's a fuller explanation from: http://stackoverflow.com/questions/20852641/bufferedimage-int-pixels-and-rendering-how-do-they-work-they-work-together
 	// Basic types like short, int, long etc are not Objects.
@@ -60,14 +60,14 @@ public class Game extends Canvas implements Runnable {
 		
 		screen = new Screen (width, height);
 		frame = new JFrame();
-		
 		key = new Keyboard();
 		if(randomized == true) {
 			level = new RandomLevel(64, 64);  //I kind of like the randomized level, so I kept it :) 
 		}else{					
-		level = new SpawnLevel ("/textures/level.png");
+		level = Level.spawn;
 		}
-		player = new Player (128, 128, key); //128 is the x and y axis of the spawning points of the player
+		TileCoordinate playerSpawn = new TileCoordinate(20,62);
+		player = new Player (playerSpawn.x(),playerSpawn.y(), key); //128 is the x and y axis of the spawning points of the player
 		
 		addKeyListener(key);
 	}

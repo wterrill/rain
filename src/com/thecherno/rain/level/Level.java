@@ -13,6 +13,8 @@ public class Level {
 	protected int[] tileInt;
 	protected int[] tiles;
 	private static int SPRITE_SIZE = 16;
+	
+	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
 	
 
@@ -74,6 +76,7 @@ public class Level {
 			}
 		}
 
+	
 	// Grass = 	 0xFF00FF00 = Green
 	// Wall =  	 0xFF000000 = Black
 	// Flowers = 0xFFFFFF00 = Yellow
@@ -84,14 +87,21 @@ public class Level {
 		// providing values that are outside of the boundary of level.
 		try{
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
-		if (tiles[x + y * width] == 0xFFFFFF00 ) return Tile.flowers;
-		if (tiles[x + y * width] == 0xFF00FF00){
-			int rand = random.nextInt(3);
-			if (rand == 0) return Tile.grass1;
-			if (rand == 1) return Tile.grass2;
-			if (rand == 2) return Tile.grass3;
-			}
-		if (tiles[x + y * width] == 0xFF808080) return Tile.rock;
+		if (tiles[x + y * width] == Tile.col_spawn_flowers ) return Tile.flowers;
+		if (tiles[x + y * width] == Tile.col_spawn_grass1)return Tile.grass1; 
+		if (tiles[x + y * width] == Tile.col_spawn_grass2)return Tile.spawn_grass_summer; 
+		if (tiles[x + y * width] == Tile.col_spawn_grass3)return Tile.spawn_grass5; 
+		if (tiles[x + y * width] == Tile.col_spawn_sidewalk)return Tile.spawn_birch;
+		if (tiles[x + y * width] == Tile.col_spawn_rock)return Tile.rock;
+		if (tiles[x + y * width] == Tile.col_spawn_walls)return Tile.spawn_stone_wall1;
+		if (tiles[x + y * width] == Tile.col_spawn_inner_walls)return Tile.spawn_brick_colored;
+		if (tiles[x + y * width] == Tile.col_spawn_flooring)return Tile.spawn_birch_red; 
+		if (tiles[x + y * width] == Tile.col_spawn_water){
+			return Tile.spawn_stone_wall_vine; 
+		}
+		
+		
+		
 		if (tiles[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
 		} catch(NullPointerException e) {
 			if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;

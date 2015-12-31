@@ -53,6 +53,17 @@ public class Tile {
 	public static Tile spawn_birch_red = 		new SpawnBirchTile (Sprite.birch_red);
 	public static Tile spawn_birch_brown = 		new SpawnBirchTile (Sprite.birch_brown);
 	
+	//color definitions
+	public final static int col_spawn_flowers 		= 0xFFFFFF00;
+	public final static int col_spawn_grass1 		= 0xff4CFF00;
+	public final static int col_spawn_grass2 		= 0xFFB6FF00;
+	public final static int col_spawn_grass3 		= 0xFF00FF90;
+	public final static int col_spawn_sidewalk 		= 0xFF3F3F3F;
+	public final static int col_spawn_rock 			= 0xFF808080;
+	public final static int col_spawn_walls 		= 0xFF000000;
+	public final static int col_spawn_inner_walls 	= 0xFFBFBFBF;
+	public final static int col_spawn_flooring 		= 0xFFFFD800;
+	public final static int col_spawn_water 		= 0xFF00FFFF;
 	
 
 	public Tile(Sprite sprite) {
