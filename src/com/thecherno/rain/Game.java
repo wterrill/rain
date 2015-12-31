@@ -78,7 +78,13 @@ public class Game extends Canvas implements Runnable {
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
 	}
-
+	public static int getWindowWidth(){
+		return width * scale;
+	}
+	
+	public static int getWindowHeight(){
+		return height * scale;
+	}
 	public synchronized void start() {
 		running = true;
 		thread = new Thread(this, "Display");
@@ -129,10 +135,10 @@ public class Game extends Canvas implements Runnable {
 		stop();
 	}
  
-
 	public void update() {
 		key.update();
 		player.update();
+		level.update();
 	}
 
 	public void render() {
@@ -156,7 +162,7 @@ public class Game extends Canvas implements Runnable {
 		g.setFont(new Font("Verdana", 0,50));
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-		g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32,  64, 64);
+		//g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32,  64, 64);
 		g.drawString("Button: "+ Mouse.getButton(), 80, 80);
 		g.dispose();
 		bs.show();

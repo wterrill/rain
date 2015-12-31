@@ -1,8 +1,11 @@
 package com.thecherno.rain.level;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import com.thecherno.rain.entity.Entity;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
@@ -13,6 +16,8 @@ public class Level {
 	protected int[] tileInt;
 	protected int[] tiles;
 	private static int SPRITE_SIZE = 16;
+	
+	private static List<Entity> entities = new ArrayList<Entity>();
 	
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -43,7 +48,9 @@ public class Level {
 	
 
 	public void update() {
-
+		for (int i = 0; i < entities.size(); i++){
+		entities.get(i).update();
+		}
 	}
 
 	private void time() {
@@ -74,9 +81,15 @@ public class Level {
 				
 				}
 			}
+		for (int i = 0; i < entities.size(); i++){
+			entities.get(i).render(screen);
+			}
 		}
 
-	
+	public static void add(Entity e){
+		entities.add(e);
+		
+	}
 	// Grass = 	 0xFF00FF00 = Green
 	// Wall =  	 0xFF000000 = Black
 	// Flowers = 0xFFFFFF00 = Yellow
