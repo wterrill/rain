@@ -11,10 +11,12 @@ public abstract class Projectile extends Entity {
 	protected double nx, ny; //new x and new y. 
 	protected double speed, rateOfFire, range, damage;
 	
-	public Projectile(int x, int y, int dir){
+	public Projectile(int x, int y, double dir){
 		xOrigin = x;
 		yOrigin = y;
 		angle = dir;
+		this.x = x;
+		this.y = y;
 	}
 	
 	protected void move(){
