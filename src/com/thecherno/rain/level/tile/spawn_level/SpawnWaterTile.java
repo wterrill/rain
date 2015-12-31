@@ -9,4 +9,8 @@ public class SpawnWaterTile extends Tile {
 		super(sprite);
 	}
 
+	public boolean solid(){
+		return true;
+	}
+
 }

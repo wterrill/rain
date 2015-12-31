@@ -68,7 +68,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		TileCoordinate playerSpawn = new TileCoordinate(20,62);
 		player = new Player (playerSpawn.x(),playerSpawn.y(), key); //128 is the x and y axis of the spawning points of the player
-		
+		player.init(level);
 		addKeyListener(key);
 	}
 

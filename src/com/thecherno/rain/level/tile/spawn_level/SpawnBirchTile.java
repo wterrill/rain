@@ -15,7 +15,7 @@ public class SpawnBirchTile extends Tile {
 	}
 	
 	public boolean solid(){
-		return true;
+		return false;
 	}
 
 }
