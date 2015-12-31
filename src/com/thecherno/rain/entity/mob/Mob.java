@@ -20,10 +20,14 @@ public abstract class Mob extends Entity {
 		x += xa;
 		y += ya;
 		}
-		}
+	}
 	
 	public void update () {
-		}
+	}
+	
+	protected void shoot(int x, int y, double dir){
+		System.out.println("Angle: " + dir);
+	}
 	
 	private boolean collision (int xa, int ya){
 		boolean solid = false;
