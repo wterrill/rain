@@ -2,6 +2,7 @@ package com.thecherno.rain.graphics;
 
 import java.util.Random;
 
+import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.level.tile.Tile;
 
@@ -58,7 +59,28 @@ public class Screen {
 				int xa = x + xp;
 				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa <0) xa = 0;
+				
 				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.SIZE];
+			}
+		}
+
+	}
+	
+	public void renderProjectile(int xp, int yp, Projectile p) {
+		xp -= xOffset; //adjusting the x location of the tile by the offset.
+		yp -= yOffset;
+		for (int y = 0; y < p.getSpriteSize(); y++) {
+			int ya = y + yp; 
+				// absolute y = the pixel within the sprite that is up to be rendered.
+				// y (zero to 15) tile position
+				// y = yp = tile position of the tile on the map.
+				// ya= absolute position on the map of the tile that we're rendering
+			for (int x = 0; x < p.getSpriteSize(); x++) {
+				int xa = x + xp;
+				if (xa < -p.getSpriteSize() || xa >= width || ya < 0 || ya >= height) break;
+				if (xa <0) xa = 0;
+				int col = p.getSprite().pixels[x + y * p.getSpriteSize()];
+				if (col != 0xffff00ff) pixels[xa + ya * width] = p.getSprite().pixels[x + y * p.getSpriteSize()];
 			}
 		}
 
