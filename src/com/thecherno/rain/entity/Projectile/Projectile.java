@@ -1,5 +1,7 @@
 package com.thecherno.rain.entity.Projectile;
 
+import java.util.Random;
+
 import com.thecherno.rain.entity.Entity;
 import com.thecherno.rain.graphics.Sprite;
 
@@ -12,6 +14,8 @@ public abstract class Projectile extends Entity {
 	protected double nx, ny; //new x and new y. 
 	protected double distance;
 	protected double speed, rateOfFire, range, damage;
+	
+	protected final Random random = new Random();
 	
 	public Projectile(int x, int y, double dir){
 		xOrigin = x;
