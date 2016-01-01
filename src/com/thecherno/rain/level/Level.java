@@ -94,7 +94,7 @@ public class Level {
 	// Wall =  	 0xFF000000 = Black
 	// Flowers = 0xFFFFFF00 = Yellow
 	// Rock = 	 0xFF808080 = Grey
-	public Tile getTile(int x, int y) {
+/*	public Tile getTile(int x, int y) {
 		Random random = new Random();
 		// This allows us to take the finite map and make it look infinite by
 		// providing values that are outside of the boundary of level.
@@ -128,6 +128,26 @@ public class Level {
 		
 		
 		return Tile.voidTile;
-	}
+	}*/
 	
+	public Tile getTile(int x, int y) {
+		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile_generic;
+		if (tiles[x + y * width] == Tile.col_spawn_flowers ) 
+			{
+			return Tile.flowers_generic;
+			}
+		if (tiles[x + y * width] == Tile.col_spawn_grass1)
+			{
+			return Tile.grass1_generic; 
+			}
+		if (tiles[x + y * width] == Tile.col_spawn_grass2)return Tile.spawn_grass_summer; 
+		if (tiles[x + y * width] == Tile.col_spawn_grass3)return Tile.grass1_level1; 
+		if (tiles[x + y * width] == Tile.col_spawn_sidewalk)return Tile.spawn_birch;
+		if (tiles[x + y * width] == Tile.col_spawn_rock)return Tile.rock_generic;
+		if (tiles[x + y * width] == Tile.col_spawn_walls)return Tile.spawn_stone_wall2;
+		if (tiles[x + y * width] == Tile.col_spawn_inner_walls)return Tile.spawn_brick_colored;
+		if (tiles[x + y * width] == Tile.col_spawn_flooring)return Tile.spawn_birch_red; 
+		if (tiles[x + y * width] == Tile.col_spawn_water)return Tile.spawn_water1; 
+		return Tile.voidTile_generic;
+	}
 }

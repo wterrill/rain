@@ -44,21 +44,21 @@ public class Screen {
 
 
 	// things that go into rendering: Where? -- we're using offset, based off player position.
-	public void renderTile(int xp, int yp, Tile tile) {
+	public void renderTile(int xp, int yp, Sprite sprite) {
 		xp -= xOffset; //adjusting the x location of the tile by the offset.
 		yp -= yOffset;
-		for (int y = 0; y < tile.sprite.SIZE; y++) {
+		for (int y = 0; y < sprite.SIZE; y++) {
 			int ya = y + yp; 
 				// absolute y = the pixel within the sprite that is up to be rendered.
 				// y (zero to 15) tile position
 				// y = yp = tile position of the tile on the map.
 				// ya= absolute position on 
 				// the map of the tile that we're rendering
-			for (int x = 0; x < tile.sprite.SIZE; x++) {
+			for (int x = 0; x < sprite.SIZE; x++) {
 				int xa = x + xp;
-				if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa <0) xa = 0;
-				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.SIZE];
 			}
 		}
 
