@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
@@ -18,6 +19,7 @@ public class Level {
 	private static int SPRITE_SIZE = 16;
 	
 	private static List<Entity> entities = new ArrayList<Entity>();
+	private static List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -51,10 +53,16 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++){
 		entities.get(i).update();
 		}
+		for (int i = 0; i < projectiles.size(); i++){
+		projectiles.get(i).update();
+		}
 	}
 
 	private void time() {
 
+	}
+	public List <Projectile> getProjectiles() {
+		return projectiles;
 	}
 
 	public void render(int xScroll, int yScroll, Screen screen) {
@@ -84,11 +92,19 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++){
 			entities.get(i).render(screen);
 			}
+		
+		for (int i = 0; i < projectiles.size(); i++){
+			projectiles.get(i).render(screen);
+			}
 		}
 
 	public static void add(Entity e){
 		entities.add(e);
-		
+	}
+	
+	public static void addProjectile(Projectile p)
+	{
+		projectiles.add(p);
 	}
 	// Grass = 	 0xFF00FF00 = Green
 	// Wall =  	 0xFF000000 = Black
