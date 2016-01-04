@@ -59,8 +59,19 @@ public class Level {
 	}
 
 	private void time() {
-
 	}
+	
+	public boolean tileCollision (double x, double y, double nx, double ny, int size){
+		boolean solid = false;
+		for (int c = 0; c < 4; c++) {
+			double xt =  ((x + nx) + c % 2 * size / 16);
+			double yt =  ((y + ny) + c / 2 * size / 16);
+			if (getTile( (int)xt,(int)yt ).solid()) solid = true;
+			}
+		return solid;	
+	}
+	
+
 	public List <Projectile> getProjectiles() {
 		return projectiles;
 	}
@@ -102,8 +113,9 @@ public class Level {
 		entities.add(e);
 	}
 	
-	public static void addProjectile(Projectile p)
+	public  void addProjectile(Projectile p)
 	{
+		p.init(this);
 		projectiles.add(p);
 	}
 	// Grass = 	 0xFF00FF00 = Green
