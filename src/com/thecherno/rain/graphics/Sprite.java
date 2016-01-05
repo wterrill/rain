@@ -16,7 +16,6 @@ public class Sprite {
 	public static Sprite grass_generic = 			new Sprite (16, 0, 1, SpriteSheet.generic_tiles);
 	public static Sprite rock_generic = 			new Sprite (16, 2, 1, SpriteSheet.generic_tiles);
 	
-
 	//level tiles from level1.png
 	public static Sprite birch_red = 		new Sprite (16, 0, 0, SpriteSheet.level1);
 	public static Sprite grass1_level1 = 	new Sprite (16, 2, 0, SpriteSheet.level1);
@@ -26,8 +25,6 @@ public class Sprite {
 	public static Sprite stone_wall2 = 		new Sprite (16, 0, 2, SpriteSheet.level1);
 	public static Sprite brick_colored =	new Sprite (16, 1, 2, SpriteSheet.level1); 
 	public static Sprite water1 = 			new Sprite (16, 2, 2, SpriteSheet.level1); 
-	
-	
 	
 	//the player sprite is 32x32, so the numbering on the sprite sheet is different.
 	public static Sprite player_up = 		new Sprite(32, 0, 0, SpriteSheet.characters);
@@ -50,6 +47,8 @@ public class Sprite {
 	public static Sprite projectile_wizard = new Sprite(16, 0,0, SpriteSheet.projectile_wizard);
 	
 
+	//particles
+	public static Sprite paricle_normal = new Sprite(3, 0xaaaaaa);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 			//this defines what a new Sprite needs in order 

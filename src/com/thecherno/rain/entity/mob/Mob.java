@@ -6,6 +6,7 @@ import java.util.List;
 import com.thecherno.rain.entity.Entity;
 import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.entity.Projectile.WizardProjectile;
+import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.Level;
 
@@ -32,6 +33,9 @@ public abstract class Mob extends Entity {
 			
 		x += xa;
 		y += ya;
+		}else{
+			Particle p = new Particle(x,y,50,500);
+			level.add(p);
 		}
 	}
 	
