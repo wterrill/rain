@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Random;
 
 import com.thecherno.rain.entity.Entity;
+import com.thecherno.rain.entity.Spawner;
 import com.thecherno.rain.entity.Projectile.Projectile;
+import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
@@ -20,6 +22,7 @@ public class Level {
 	
 	private static List<Entity> entities = new ArrayList<Entity>();
 	private static List<Projectile> projectiles = new ArrayList<Projectile>();
+	private static List<Particle> particles = new ArrayList<Particle>();
 	
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -37,6 +40,8 @@ public class Level {
 	public Level(String path) {
 		loadLevel(path);
 		generateLevel();
+		
+		add(new Spawner(16 * 16, 62 * 16, Spawner.Type.PARTICLE, 100000, this));
 	}
 
 	//This is a method.  It is called by a constructor, which sets the parameters to run once the method is called.
@@ -48,13 +53,15 @@ public class Level {
 
 	}
 	
-
 	public void update() {
 		for (int i = 0; i < entities.size(); i++){
 		entities.get(i).update();
 		}
 		for (int i = 0; i < projectiles.size(); i++){
 		projectiles.get(i).update();
+		}
+		for (int i = 0; i < particles.size(); i++){
+		particles.get(i).update();
 		}
 	}
 
@@ -70,8 +77,6 @@ public class Level {
 		}
 		return solid;
 	}
-	
-	
 
 	public List <Projectile> getProjectiles() {
 		return projectiles;
@@ -108,22 +113,23 @@ public class Level {
 		for (int i = 0; i < projectiles.size(); i++){
 			projectiles.get(i).render(screen);
 			}
+		for (int i = 0; i < particles.size(); i++){
+			particles.get(i).render(screen);
+			}
 		}
 
-	public static void add(Entity e){
-		entities.add(e);
+	public  void add(Entity e){
+		e.init(this);
+		if (e instanceof Particle) particles.add((Particle)e);
+		else if (e instanceof Projectile) projectiles.add((Projectile) e);
+		else entities.add(e);
 	}
 	
-	public  void addProjectile(Projectile p)
-	{
-		p.init(this);
-		projectiles.add(p);
-	}
-	// Grass = 	 0xFF00FF00 = Green
+/*	public Tile getTile(int x, int y) {
+  	// Grass = 	 0xFF00FF00 = Green
 	// Wall =  	 0xFF000000 = Black
 	// Flowers = 0xFFFFFF00 = Yellow
 	// Rock = 	 0xFF808080 = Grey
-/*	public Tile getTile(int x, int y) {
 		Random random = new Random();
 		// This allows us to take the finite map and make it look infinite by
 		// providing values that are outside of the boundary of level.
