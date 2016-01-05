@@ -42,6 +42,22 @@ public class Screen {
 			// clear is used to clear the screen; other wise what ever is previously drawn is always displayed.
 		}
 	}
+	
+	public void renderSprite(int xp, int yp, Sprite sprite, boolean fixed){
+		if (fixed) {
+			xp -= xOffset;
+			yp -= yOffset;
+		}
+		for (int y=0; y<sprite.getHeight(); y++){
+			int ya = y + yp;
+			for (int x = 0; x<sprite.getWidth();x++){
+				int xa = x + xp;
+				if (xa < 0 || xa >= width || ya < 0 || ya >= height) continue;
+				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.getWidth()];
+			}
+		}
+		
+	}
 
 
 	// things that go into rendering: Where? -- we're using offset, based off player position.
