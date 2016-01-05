@@ -40,8 +40,6 @@ public class Level {
 	public Level(String path) {
 		loadLevel(path);
 		generateLevel();
-		
-		add(new Spawner(16 * 16, 62 * 16, Spawner.Type.PARTICLE, 100000, this));
 	}
 
 	//This is a method.  It is called by a constructor, which sets the parameters to run once the method is called.
