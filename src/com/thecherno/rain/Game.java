@@ -155,13 +155,7 @@ public class Game extends Canvas implements Runnable {
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 		
-		Sprite sprite = new Sprite(2,2, 0xffffff);
-		Random random = new Random();
-		for (int i=0; i < 100; i++){
-			int x = random.nextInt(20);
-			int y = random.nextInt(20);
-			screen.renderSprite(width - 60 + x, 50 + y ,sprite, false);
-		}
+
 		for (int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -171,8 +165,6 @@ public class Game extends Canvas implements Runnable {
 		g.setFont(new Font("Verdana", 0,50));
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-		//g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32,  64, 64);
-		g.drawString("Button: "+ Mouse.getButton(), 80, 80);
 		g.dispose();
 		bs.show();
 	}

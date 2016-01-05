@@ -1,5 +1,6 @@
 package com.thecherno.rain.entity.Projectile;
 
+import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 import com.thecherno.rain.level.tile.Tile;
@@ -21,7 +22,10 @@ public class WizardProjectile extends Projectile {
 	}
 
 	public void update(){
-		if (level.tileCollision(x, y, nx, ny, 7)) remove();
+		if (level.tileCollision(x, y, nx, ny, 7)){
+			Particle p = new Particle((int)x,(int)y,50,500);
+			level.add(p);remove();	
+		}
 			move();
 	}
 	
