@@ -1,7 +1,9 @@
 package com.thecherno.rain.entity.Projectile;
 
-import com.thecherno.rain.entity.Spawner;
+
 import com.thecherno.rain.entity.particle.Particle;
+import com.thecherno.rain.entity.spawner.ParticleSpawner;
+import com.thecherno.rain.entity.spawner.Spawner;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
 
@@ -16,22 +18,21 @@ public class WizardProjectile extends Projectile {
 		speed = 3;
 		sprite = Sprite.projectile_wizard;
 		nx = speed * Math.cos(dir);
-		ny = speed * Math.sin(dir);
-		
-		
+		ny = speed * Math.sin(dir);		
 	}
 
 	public void update(){
 		if (level.tileCollision(x, y, nx, ny, 7)){
-			level.add(new Spawner((int)x, (int)y, Spawner.Type.PARTICLE, 100000, level));
-			Particle p = new Particle((int)x,(int)y,500);
-			level.add(p);remove();	
-		}
+			int life = 20;
+			int amount = 10;
+			level.add(new ParticleSpawner((int)x, (int)y, life, amount, level));
+			remove();
+		} else {
 			move();
+		}
 	}
 	
-	protected void move() {
-		
+	protected void move() {	
 		x += nx;
 		y += ny;
 		

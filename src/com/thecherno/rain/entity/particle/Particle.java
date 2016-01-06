@@ -8,10 +8,12 @@ public class Particle extends Entity {
 	private Sprite sprite;
 	
 	private int life;
+	private int time;
 	
 	protected double xx,yy,xa, ya;
 	
 	public Particle(int x, int y, int life){
+		System.out.println("particle life " + life);
 		this.x = x;
 		this.y = y;
 		this.xx = x;
@@ -24,7 +26,9 @@ public class Particle extends Entity {
 	}
 
 	public void update(){
-
+		time++;
+		if (time >= 8000) time = 0;
+		if(time > life) remove();
 		this.xx += xa;
 		this.yy += ya;
 	}

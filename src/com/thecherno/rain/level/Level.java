@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.thecherno.rain.entity.Entity;
-import com.thecherno.rain.entity.Spawner;
+import com.thecherno.rain.entity.spawner.Spawner;
 import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.entity.particle.Particle;
 import com.thecherno.rain.graphics.Screen;
@@ -25,8 +25,6 @@ public class Level {
 	private static List<Particle> particles = new ArrayList<Particle>();
 	
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
-
-	
 
 	
 	//this is a constructor.  If defines what is in a level, how those items are defined.
@@ -61,18 +59,34 @@ public class Level {
 		for (int i = 0; i < particles.size(); i++){
 		particles.get(i).update();
 		}
+		remove();
 	}
 
+	private void remove(){
+		for (int i=0; i < entities.size(); i++)
+		{
+			if(entities.get(i).isRemoved()) entities.remove(i);
+		}
+		for(int i=0; i < projectiles.size(); i++)
+		{
+			if(projectiles.get(i).isRemoved()) projectiles.remove(i);
+		}
+		for(int i=0; i<particles.size(); i++)
+		{
+			if(particles.get(i).isRemoved()) particles.remove(i);
+		}
+		
+	}
 	private void time() {
 	}
 	
 	public boolean tileCollision (double x, double y, double xa, double ya, int size){
 		boolean solid = false;
-		for(int c = 0; c < 4; c++){
-			int xt = (((int)x +(int) xa) + c % 2 * size) / 16;
-			int yt = (((int)y + (int)ya) + c/2 * size) / 16;
+		//for(int c = 0; c < 4; c++){  //Cherno used these "c" values... but I'm not really sure why?
+			int xt = ((int)x + (int)xa) / 16;				//int xt = (((int)x +(int) xa) + c % 2 * size) / 16;
+			int yt = ((int)y + (int)ya) / 16;				//int yt = (((int)y + (int)ya) + c/2 * size) / 16;
 			if (getTile(xt,yt).solid()) solid = true;
-		}
+		//}
 		return solid;
 	}
 
