@@ -8,6 +8,9 @@ import com.thecherno.rain.level.tile.Tile;
 
 public class Screen {
 
+	private Random random = new Random();
+	// java imported number random generator
+	
 	public int width;
 	public int height;
 	public int[] pixels;
@@ -15,12 +18,7 @@ public class Screen {
 	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
 	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 	// tiles that we use to create a display map
-
 	public int xOffset, yOffset;
-
-	private Random random = new Random();
-	// java imported number random generator
-
 	int xtime = 0;
 	int ytime = 75;
 	int counter = 0;
@@ -29,7 +27,6 @@ public class Screen {
 		this.width = width;
 		this.height = height;
 		pixels = new int[width * height];
-
 		for (int i = 0; i < MAP_SIZE * MAP_SIZE; i++) {
 			tiles[i] = random.nextInt(0xFFFFFF);
 			// every time that a number (i) is less than are tile size (64*64), add one to a number (i).  Then, assess that integer (i) in the tiles array, and apply a random color from 0-255 (or 0x000000 to 0xFFFFFF where 0x denotes hexidecimal format).
@@ -56,7 +53,6 @@ public class Screen {
 				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.getWidth()];
 			}
 		}
-		
 	}
 
 
@@ -79,7 +75,6 @@ public class Screen {
 				pixels[xa + ya * width] = sprite.pixels[x + y * sprite.SIZE];
 			}
 		}
-
 	}
 	
 	public void renderProjectile(int xp, int yp, Projectile p) {
@@ -99,7 +94,6 @@ public class Screen {
 				if (col != 0xffff00ff) pixels[xa + ya * width] = p.getSprite().pixels[x + y * p.getSpriteSize()];
 			}
 		}
-
 	}
 	
 	public void renderPlayer (int xp, int yp, Sprite sprite) {
@@ -117,14 +111,12 @@ public class Screen {
 			// the next line handles the transparency of the sprite if the color is pink.
 			// *note* the initial ff handles the alpha channel, and 0xff00ff is the color pink.
 			if (col != 0xffff00ff) pixels[xa + ya * width] = col;
+			}
 		}
-	}
-		
 	}
 
 	public void setOffset(int xOffset, int yOffset) {
 		this.xOffset = xOffset;
 		this.yOffset = yOffset;
 	}
-
 }

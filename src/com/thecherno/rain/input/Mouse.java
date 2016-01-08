@@ -30,11 +30,9 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
-		
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -46,11 +44,9 @@ public class Mouse implements MouseListener, MouseMotionListener{
 	}
 
 	public void mouseEntered(MouseEvent e) {
-	
 	}
 
 	public void mouseExited(MouseEvent e) {
-		
 	}
 
 }

@@ -11,9 +11,7 @@ public abstract class Entity {
 	private boolean removed = false;
 	protected Level level;
 	protected final Random random = new Random();
-	
 	public void update () {
-		
 	}
 	
 	public void render (Screen screen){
@@ -31,6 +29,4 @@ public abstract class Entity {
 	public void init(Level level) {
 		this.level = level;
 	}
-	
-	
 }

@@ -22,7 +22,6 @@ public class Tile {
 	public static Tile voidTile_generic = 	new VoidTile (Sprite.voidSprite_generic);
 	
 	//level1
-
 	public static Tile spawn_brick_colored =	new SpawnBrickTile(Sprite.brick_colored);
 	public static Tile spawn_stone_wall2 = 	new SpawnWallTile(Sprite.stone_wall2);
 	public static Tile spawn_grass_summer = 	new SpawnGrassTile (Sprite.grass_summer);
@@ -31,7 +30,6 @@ public class Tile {
 	public static Tile spawn_water1 = 			new SpawnWaterTile (Sprite.water1);
 	public static Tile spawn_birch = 			new SpawnBirchTile (Sprite.birch);
 	public static Tile spawn_birch_red = 		new SpawnBirchTile (Sprite.birch_red);
-	
 	
 	//color definitions
 	public final static int col_spawn_flowers 		= 0xFFFFFF00;
@@ -45,7 +43,6 @@ public class Tile {
 	public final static int col_spawn_flooring 		= 0xFFFFD800;
 	public final static int col_spawn_water 		= 0xFF00FFFF;
 	
-
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
 	}
@@ -57,5 +54,4 @@ public class Tile {
 	public boolean solid() {
 		return false;
 	} // by default a tile is not solid, you can pass through it, unless we define otherwise in a sub tile class.
-
 }

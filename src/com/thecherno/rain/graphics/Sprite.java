@@ -7,8 +7,9 @@ public class Sprite {
 	public final int SIZE;
 	private int x, y;
 	private int width, height;
-	public int [] pixels;
 	private SpriteSheet sheet;
+	
+	public int [] pixels;
 	
 	//generic sprites from genericTiles.png
 	public static Sprite voidSprite_generic = 		new Sprite (16,0x1B87E0);
@@ -46,7 +47,6 @@ public class Sprite {
 	//projectile sprites
 	public static Sprite projectile_wizard = new Sprite(16, 0,0, SpriteSheet.projectile_wizard);
 	
-
 	//particles
 	public static Sprite paricle_normal = new Sprite(3, 0xaaaaaa);
 	
@@ -70,7 +70,6 @@ public class Sprite {
 		SIZE = -1;
 		pixels = new int[width*height];
 		setColor(color);
-		
 	}
 	public Sprite (int size, int color){
 		SIZE = size;
@@ -79,6 +78,7 @@ public class Sprite {
 		pixels = new int [SIZE*SIZE];
 		setColor(color);
 	}
+	
 	private void setColor(int color){
 		for (int i= 0; i<width*height; i++){
 			pixels[i] = color;
@@ -101,5 +101,4 @@ public class Sprite {
 			}
 		}
 	}
-	
 }

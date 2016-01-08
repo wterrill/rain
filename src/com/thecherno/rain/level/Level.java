@@ -18,8 +18,8 @@ public class Level {
 	protected int width, height;
 	protected int[] tileInt;
 	protected int[] tiles;
-	private static int SPRITE_SIZE = 16;
 	
+	private static int SPRITE_SIZE = 16;
 	private static List<Entity> entities = new ArrayList<Entity>();
 	private static List<Projectile> projectiles = new ArrayList<Projectile>();
 	private static List<Particle> particles = new ArrayList<Particle>();
@@ -42,11 +42,9 @@ public class Level {
 
 	//This is a method.  It is called by a constructor, which sets the parameters to run once the method is called.
 	protected void generateLevel() {
-
 	}
 
 	protected void loadLevel(String path) {
-
 	}
 	
 	public void update() {
@@ -75,8 +73,8 @@ public class Level {
 		{
 			if(particles.get(i).isRemoved()) particles.remove(i);
 		}
-		
 	}
+	
 	private void time() {
 	}
 	
@@ -110,12 +108,9 @@ public class Level {
 				//x0, x1 = x min and x max on the screen
 				//y0k y1 = y min and y max on the screen
 				getTile(x, y).render(x,y,screen);
-
-				
 				// getTile examines the map array and gets the value of the specific tile there.
 				// grass, stone, flowers, etc.
 				// then we call the render method from Tile to put the tile on the screen
-				
 				}
 			}
 		for (int i = 0; i < entities.size(); i++){
@@ -159,9 +154,6 @@ public class Level {
 		if (tiles[x + y * width] == Tile.col_spawn_water){
 			return Tile.spawn_stone_wall_vine; 
 		}
-		
-		
-		
 		if (tiles[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
 		} catch(NullPointerException e) {
 			if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
@@ -172,8 +164,6 @@ public class Level {
 			if (tileInt[x + y * width] == 4) return Tile.rock;
 			//if (tileInt[x + y * width] == 0xFF000000) return Tile.rock; // this should be Tile.wall in the future.
 		}
-		
-		
 		return Tile.voidTile;
 	}*/
 	

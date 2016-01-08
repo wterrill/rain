@@ -29,10 +29,9 @@ public class Game extends Canvas implements Runnable {
 	public static int height = width / 16 * 9;
 	public static int scale = 3;
 	// variables used to set  a defined resolution for the game.
-	
-	
+		
 	public static String title = "Rain";
-	
+	public Screen screen;
 	
 	private Thread thread;
 	private JFrame frame;
@@ -42,26 +41,17 @@ public class Game extends Canvas implements Runnable {
 	private boolean running = false;
 	private boolean randomized = false; // This boolean sets whether or not the level is from a pre-created map, or is generated randomly.
 	// NEED TO CHECK THESE LINES AND UPDATE ACCORDINGLY
-		
-	
-	public Screen screen;
-	
-
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); //this creates an image
 	private int [] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData(); //and this allows us to write to it.
-	
 	// Here's a fuller explanation from: http://stackoverflow.com/questions/20852641/bufferedimage-int-pixels-and-rendering-how-do-they-work-they-work-together
 	// Basic types like short, int, long etc are not Objects.
 	// However, int[] is an array. Arrays are objects in java. Java manipulates objects by reference, not value.
 	// In this line you are not creating a new object. You are storing a reference to the object int[] in your 
 	// variable pixels. Anything you change in pixels, gets changed inside of the int[] object in image
 	
-	
-	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
-		
 		screen = new Screen (width, height);
 		frame = new JFrame();
 		key = new Keyboard();
@@ -73,13 +63,12 @@ public class Game extends Canvas implements Runnable {
 		TileCoordinate playerSpawn = new TileCoordinate(20,62);
 		player = new Player (playerSpawn.x(),playerSpawn.y(), key); //128 is the x and y axis of the spawning points of the player
 		player.init(level);
-		
 		addKeyListener(key);
-		
 		Mouse mouse = new Mouse();
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
 	}
+	
 	public static int getWindowWidth(){
 		return width * scale;
 	}
@@ -87,6 +76,7 @@ public class Game extends Canvas implements Runnable {
 	public static int getWindowHeight(){
 		return height * scale;
 	}
+	
 	public synchronized void start() {
 		running = true;
 		thread = new Thread(this, "Display");
@@ -132,7 +122,6 @@ public class Game extends Canvas implements Runnable {
 				updates = 0;
 				frames = 0;
 			}
-
 		}
 		stop();
 	}
@@ -155,7 +144,6 @@ public class Game extends Canvas implements Runnable {
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 		
-
 		for (int i=0; i<pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -181,5 +169,4 @@ public class Game extends Canvas implements Runnable {
 
 		game.start();
 	}
-
 }

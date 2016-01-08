@@ -17,5 +17,4 @@ public class SpawnGrassTile extends Tile {
 	public boolean solid(){
 		return false;
 	}
-
 }

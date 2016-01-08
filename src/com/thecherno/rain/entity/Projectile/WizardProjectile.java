@@ -35,9 +35,7 @@ public class WizardProjectile extends Projectile {
 	protected void move() {	
 		x += nx;
 		y += ny;
-		
 		if (distance() > range) remove();
-		
 	}
 	
 	private double distance(){

@@ -8,21 +8,20 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
 	
 	private String path;
+	
 	public final int SIZE;
 	public int[] pixels;
-	
 	public static SpriteSheet characters = new SpriteSheet ("/textures/sheets/charactersheet.png", 256);
 	public static SpriteSheet generic_tiles = new SpriteSheet ("/textures/sheets/genericTiles.png", 256);
 	public static SpriteSheet level1 = new SpriteSheet("/textures/sheets/level1.png",48);
 	public static SpriteSheet projectile_wizard = new SpriteSheet("/textures/sheets/projectiles/wizard.png",48);
-	
 	public SpriteSheet (String path, int size) {
 		this.path = path;
 		SIZE = size;
 		pixels = new int [SIZE * SIZE];
 		load();
 	}
-
+	
 	private void load() {
 		try {
 			String a = System.getProperty("java.class.path");
@@ -35,5 +34,4 @@ public class SpriteSheet {
 			e.printStackTrace();
 		}
 	}
-	
 }

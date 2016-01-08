@@ -23,17 +23,13 @@ public class Keyboard implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()] = true;
-
 	}
 
 	public void keyReleased(KeyEvent e) {
 		keys[e.getKeyCode()] = false;
-
 	}
 
 	public void keyTyped(KeyEvent e) {
-		
-		
 	}
 
 }

@@ -37,14 +37,12 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void update () {
-		
 	}
 	
 	protected void shoot(int x, int y, double dir){
 		//dir = Math.toDegrees(dir);
 		Projectile p = new WizardProjectile(x,y,dir);
 		level.add(p);
-		
 	}
 	
 	private boolean collision (int xa, int ya){
@@ -58,7 +56,5 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void render () {
-		
 	}
-
 }
