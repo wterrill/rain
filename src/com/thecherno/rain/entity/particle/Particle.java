@@ -20,7 +20,7 @@ public class Particle extends Entity {
 		this.zz = random.nextFloat() + 2.0;
 		this.xa = random.nextGaussian();
 		this.ya = random.nextGaussian();
-		this.life = life + random.nextInt(400) - 10;		
+		this.life = life + random.nextInt(100) - 10;		
 		sprite = Sprite.paricle_normal;
 	}
 
@@ -32,8 +32,8 @@ public class Particle extends Entity {
 		if(zz<0){ //zz = 0 is our 'floor
 			zz=0; //we keep the z value pinned to the floor.
 			za*=-0.6; //we multiply by -0.8 in order to have the velocity change direction and get reduced for every 'bounce'
-			//xa*=0.4; //to keep particles grouped, we half the x and y distances.
-			//ya*=0.4;
+			xa*=0.4; //to keep particles grouped, we half the x and y distances.
+			ya*=0.4;
 		}
 		move((xx + xa), (yy + ya) + (zz + za));
 	}
@@ -68,6 +68,6 @@ public class Particle extends Entity {
 		return solid;
 	}
 	public void render (Screen screen){
-		screen.renderSprite((int)xx ,(int)yy - (int)zz - 3,sprite,true);
+		screen.renderSprite((int)xx ,(int)yy - (int)zz ,sprite,true);
 	}
 }
