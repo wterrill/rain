@@ -17,8 +17,9 @@ public class Particle extends Entity {
 		this.y = y;
 		this.xx = x;
 		this.yy = y;
-		this.zz = 20.0;
-		this.xa = random.nextGaussian() + 2.0;
+		this.zz = 20;
+		this.xa = random.nextGaussian();
+		if (this.xa <0) this.xa = 0.1;
 		this.ya = random.nextGaussian();
 		this.life = life;		
 		sprite = Sprite.paricle_normal;

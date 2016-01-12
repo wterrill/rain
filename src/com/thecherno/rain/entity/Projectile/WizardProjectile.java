@@ -22,7 +22,7 @@ public class WizardProjectile extends Projectile {
 	}
 
 	public void update(){
-		if (level.tileCollision(x, y, nx, ny, 7)){
+		if (level.tileCollision((int)(x + nx), (int)(y + ny), 7,5,4)){  //5 and 4 are the number of pixels from the upper left corner to the plane of the pojectile in the x and y direction. (max extension)
 			int life = 20;
 			int amount = 10;
 			level.add(new ParticleSpawner((int)x, (int)y, life, amount, level));
