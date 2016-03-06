@@ -17,7 +17,7 @@ public class AnimatedSprite extends Sprite{
     
 
     
-       public AnimatedSprite (SpriteSheet sheet, int width, int height, int lenght){    
+       public AnimatedSprite (SpriteSheet sheet, int width, int height, int length){    
            super(sheet, width, height);
            this.length = length;
            sprite = sheet.getSprites()[0];
@@ -27,8 +27,8 @@ public class AnimatedSprite extends Sprite{
        public void update(){
            time++;
            if (time % rate == 0) {
-            if (frame >= (length - 1)) frame = 0;
-            else frame++;
+            if (frame >= length - 1) frame = 0;
+            else ++frame;
             sprite = sheet.getSprites()[frame];
            }
            System.out.println(sprite + ": " + frame);
@@ -41,5 +41,13 @@ public class AnimatedSprite extends Sprite{
        
        public void setFrameRate (int frames){
            rate = frames;
+       }
+       
+       public void setFrame (int index){
+           if (index > sheet.getSprites().length-1){
+               System.err.println("Array out of Bounds - setFrame");
+               return;
+           }
+               sprite = sheet.getSprites()[index];
        }
 }
