@@ -5,6 +5,8 @@ import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.entity.Projectile.WizardProjectile;
 import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
+import com.thecherno.rain.graphics.SpriteSheet;
+import com.thecherno.rain.graphics.AnimatedSprite;
 import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.input.Mouse;
 
@@ -15,7 +17,10 @@ public class Player extends Mob {
 	private int anim = 0;
 	private boolean walking = false;
 	private Projectile p;
-	private int fireRate = 0;
+	
+        private int fireRate = 0;
+        
+        private AnimatedSprite test = new AnimatedSprite(SpriteSheet.player_down, 32, 32, 3);
 	
 	public Player (Keyboard input) {
 		this.input = input;
@@ -31,6 +36,7 @@ public class Player extends Mob {
 	}
 	
 	public void update () {
+                test.update();
 		if (fireRate > 0) fireRate--;
 			int xa=0, ya=0;
 		if (anim < 7500) anim++;
@@ -110,6 +116,7 @@ public class Player extends Mob {
 		}
 		int xx = x -16;
 		int yy = y - 16;
+                sprite = test.getSprite();
 		screen.renderPlayer (xx,yy, sprite);	
 	}
 }

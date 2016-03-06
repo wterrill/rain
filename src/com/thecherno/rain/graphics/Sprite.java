@@ -7,7 +7,7 @@ public class Sprite {
 	public final int SIZE;
 	private int x, y;
 	private int width, height;
-	private SpriteSheet sheet;
+	protected SpriteSheet sheet;
 	
 	public int [] pixels;
 	
@@ -50,6 +50,15 @@ public class Sprite {
 	//particles
 	public static Sprite paricle_normal = new Sprite(3, 0xaaaaaa);
 	
+        
+        protected Sprite(SpriteSheet sheet, int width, int height) {
+           if (width == height) SIZE = width;
+           else SIZE = -1;
+           this.width = width;
+           this.height = height;
+           this.sheet = sheet;
+        }
+        
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 			//this defines what a new Sprite needs in order 
 			// to be created, and what those objects correlate too.
@@ -78,6 +87,13 @@ public class Sprite {
 		pixels = new int [SIZE*SIZE];
 		setColor(color);
 	}
+        
+        public Sprite (int[] pixels, int width, int height){
+            SIZE = (width == height) ? width : -1;      // if width == height, size = width, else size = -1
+            this.width = width;
+            this.height = height;
+            this.pixels = pixels;
+        }
 	
 	private void setColor(int color){
 		for (int i= 0; i<width*height; i++){
