@@ -1,5 +1,6 @@
 package com.thecherno.rain;
 
+import com.thecherno.rain.entity.mob.Dummy;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,19 +9,16 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.Random;
 
 import javax.swing.JFrame;
 
+import com.thecherno.rain.entity.mob.Dummy;
 import com.thecherno.rain.entity.mob.Player;
 import com.thecherno.rain.graphics.Screen;
-import com.thecherno.rain.graphics.Sprite;
-import com.thecherno.rain.graphics.SpriteSheet;
 import com.thecherno.rain.input.Keyboard;
 import com.thecherno.rain.input.Mouse;
 import com.thecherno.rain.level.Level;
 import com.thecherno.rain.level.RandomLevel;
-import com.thecherno.rain.level.SpawnLevel;
 import com.thecherno.rain.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
@@ -39,6 +37,9 @@ public class Game extends Canvas implements Runnable {
 	private Keyboard key;
 	private Level level;
 	private Player player;
+        
+        private Dummy dummy;
+        
 	private boolean running = false;
 	private boolean randomized = false; // This boolean sets whether or not the level is from a pre-created map, or is generated randomly.
 	// NEED TO CHECK THESE LINES AND UPDATE ACCORDINGLY
@@ -62,8 +63,14 @@ public class Game extends Canvas implements Runnable {
 		level = Level.spawn;
 		}
 		TileCoordinate playerSpawn = new TileCoordinate(20,62);
+                
 		player = new Player (playerSpawn.x(),playerSpawn.y(), key); //128 is the x and y axis of the spawning points of the player
 		player.init(level);
+                
+                TileCoordinate dummySpawn = new TileCoordinate (20, 60);
+                dummy = new Dummy (dummySpawn.x(), dummySpawn.y());
+                
+                
 		addKeyListener(key);
 		Mouse mouse = new Mouse();
 		addMouseListener(mouse);
@@ -131,6 +138,8 @@ public class Game extends Canvas implements Runnable {
 		key.update();
 		player.update();
 		level.update();
+                dummy.update();
+                
 	}
 
 	public void render() {
@@ -144,6 +153,8 @@ public class Game extends Canvas implements Runnable {
 		int yScroll = player.y - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
+                
+                dummy.render(screen);
                 
 		//screen.renderSheet(40, 40, SpriteSheet.player_down, false);
 		

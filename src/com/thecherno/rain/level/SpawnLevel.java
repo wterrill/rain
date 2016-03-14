@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import com.thecherno.rain.level.tile.Tile;
+import com.thecherno.rain.entity.mob.Dummy;
 
 public class SpawnLevel extends Level {
 
@@ -25,6 +26,7 @@ public class SpawnLevel extends Level {
 			e.printStackTrace();
 			System.out.println("Exception! Could not load level file!");
 		}
+                
 	}
 	
 	protected void generateLevel(){

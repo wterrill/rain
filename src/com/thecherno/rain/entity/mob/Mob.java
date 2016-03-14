@@ -1,14 +1,11 @@
 package com.thecherno.rain.entity.mob;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.thecherno.rain.entity.Entity;
 import com.thecherno.rain.entity.Projectile.Projectile;
 import com.thecherno.rain.entity.Projectile.WizardProjectile;
-import com.thecherno.rain.entity.particle.Particle;
+import com.thecherno.rain.graphics.Screen;
 import com.thecherno.rain.graphics.Sprite;
-import com.thecherno.rain.level.Level;
 
 public abstract class Mob extends Entity {
 	
@@ -36,8 +33,9 @@ public abstract class Mob extends Entity {
 		}
 	}
 	
-	public void update () {
-	}
+	public abstract void update ();
+        
+        public abstract void render (Screen scree);
 	
 	protected void shoot(int x, int y, double dir){
 		//dir = Math.toDegrees(dir);
@@ -55,6 +53,5 @@ public abstract class Mob extends Entity {
 		return solid;
 	}
 	
-	public void render () {
-	}
+
 }

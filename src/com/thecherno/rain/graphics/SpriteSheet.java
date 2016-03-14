@@ -23,7 +23,14 @@ public class SpriteSheet {
         public static SpriteSheet player_left = new SpriteSheet(player, 2, 0, 1, 3, 32);
         public static SpriteSheet player_right = new SpriteSheet(player, 3, 0, 1, 3, 32);
         
-	
+        public static SpriteSheet npc = new SpriteSheet("/textures/sheets/npc_skeleton.png", 128, 96);
+        public static SpriteSheet npc_skeleton_down = new SpriteSheet(npc, 0, 0, 1, 3, 32);
+        public static SpriteSheet npc_skeleton_up = new SpriteSheet(npc, 2, 0, 1, 3, 32);
+	public static SpriteSheet npc_skeleton_left = new SpriteSheet(npc, 3, 0, 1, 3, 32);
+        public static SpriteSheet npc_skeleton_right = new SpriteSheet(npc, 1, 0, 1, 3, 32);
+        
+        
+        
         private Sprite[] sprites;
         
 	public SpriteSheet (SpriteSheet sheet, int x, int y, int width, int height, int spriteSize) {

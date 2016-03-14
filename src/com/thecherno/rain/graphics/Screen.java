@@ -111,7 +111,7 @@ public class Screen {
 		}
 	}
 	
-	public void renderPlayer (int xp, int yp, Sprite sprite) {
+	public void renderMob (int xp, int yp, Sprite sprite) {
 		//
 		int sprite_size = 32; // this is the size of the sprite that we use for the player
 		xp -= xOffset;
